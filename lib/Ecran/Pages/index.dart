@@ -14,6 +14,7 @@ class index extends StatefulWidget {
   int i = 0;
   int i1 = 0;
   int i2 = 0;
+
   index(this.i);
   index.rel(this.i1);
   index.top(this.i2);
@@ -46,28 +47,30 @@ class _indexState extends State<index> {
     print(i);
   }
 
-  // Widget retour() {
-  //   if (i1 != 0) {
-  //     setState(() {
-  //       i = 1;
-  //     });
-  //     return Relever(i1);
-  //   } else if (i2 != 0) {
-  //     setState(() {
-  //       i = 1;
-  //     });
-  //     return ListesTop1000(id: i2);
-  //   } else {
-  //     print("avy");
-  //     return pages[i];
-  //   }
-  // }
+  Widget retour() {
+    if (i1 != 0) {
+      setState(() {
+        i = 1;
+      });
+      return Relever(i1);
+    } else if (i2 != 0) {
+      setState(() {
+        i = 1;
+      });
+      return ListesTop1000(id: i2);
+    } else {
+      print(i);
+      print(i1);
+      print(i2);
+      return pages[i];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: pages[i],
+        child: retour(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
